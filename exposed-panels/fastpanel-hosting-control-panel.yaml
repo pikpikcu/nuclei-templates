@@ -1,0 +1,25 @@
+id: fastpanel-hosting-control-panel
+
+info:
+  name: Fastpanel Hosting Control Panel
+  author: geeknik,daffainfo
+  severity: info
+  description: Cacti is a complete network graphing solution -- https://www.cacti.net/
+  tags: tech,cacti,login
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}:8888/#/login"
+      - "{{BaseURL}}/#/login"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        part: body
+        words:
+          - "<title>FASTPANEL HOSTING CONTROL</title>"
