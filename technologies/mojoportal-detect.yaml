@@ -1,0 +1,25 @@
+id: mojoportal-detect
+
+info:
+  name: Mojoportal Detect
+  author: pikpikcu
+  severity: info
+  metadata:
+    shodan-query: http.title:"YApi"
+  tags: tech,mojoportal
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "Powered by mojoPortal"
+
+      - type: status
+        status:
+          - 200
